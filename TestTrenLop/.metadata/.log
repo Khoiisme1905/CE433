@@ -1,0 +1,13 @@
+!SESSION 2025-03-28 14:35:07.383 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-28 14:36:16.869
+!MESSAGE Indexed 'TestTrenLop_bsp' (77 sources, 55 headers) in 0.90 sec: 919 declarations; 2,181 references; 113 unresolved inclusions; 5 syntax errors; 193 unresolved names (5.86%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-28 14:36:19.937
+!MESSAGE Indexed 'TestTrenLop' (0 sources, 11 headers) in 0.00 sec: 0 declarations; 0 references; 11 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)

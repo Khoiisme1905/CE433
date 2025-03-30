@@ -1,0 +1,193 @@
+!SESSION 2025-03-07 09:00:50.928 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-07 09:02:46.579
+!MESSAGE Indexed 'Bai1_bsp' (77 sources, 55 headers) in 0.50 sec: 919 declarations; 2,181 references; 113 unresolved inclusions; 5 syntax errors; 193 unresolved names (5.86%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-07 09:02:52.514
+!MESSAGE Indexed 'Bai1' (0 sources, 13 headers) in 0.01 sec: 0 declarations; 0 references; 13 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 09:05:49.141
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 09:05:51.231
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/Bai1/Bai1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 09:07:52.276
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 09:07:53.394
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 09:07:55.533
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --stop] return code: 2, no processors found
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 09:07:55.773
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/Bai1/Bai1.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 09:07:58.338
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, /cygdrive/e/CE433/ThucHanh/Bai1/Software/Bai1/Bai1.elf] return code: 2, no processors found
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 09:07:58.345
+!MESSAGE Downloading ELF Process failed
+!SESSION 2025-03-07 09:54:03.138 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-07 10:02:48.359
+!MESSAGE Indexed 'Bai2_bsp' (77 sources, 55 headers) in 0.64 sec: 919 declarations; 2,181 references; 113 unresolved inclusions; 5 syntax errors; 193 unresolved names (5.86%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-07 10:02:49.870
+!MESSAGE Indexed 'Bai2' (0 sources, 13 headers) in 0.01 sec: 0 declarations; 0 references; 13 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:04:37.428
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:04:39.494
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --stop] return code: 2, no processors found
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:04:39.725
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/Bai2/Bai2.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:04:42.294
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, /cygdrive/e/CE433/ThucHanh/Bai1/Software/Bai2/Bai2.elf] return code: 2, no processors found
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:04:42.299
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:06:00.188
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:06:02.089
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --stop] return code: 2, no processors found
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:06:02.312
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/Bai2/Bai2.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:06:04.757
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, /cygdrive/e/CE433/ThucHanh/Bai1/Software/Bai2/Bai2.elf] return code: 2, no processors found
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:06:04.757
+!MESSAGE Downloading ELF Process failed
+!SESSION 2025-03-07 10:09:45.642 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.debug.core 4 103 2025-03-07 10:10:00.096
+!MESSAGE Project Bai2 does not exist. Please check that your launch configuration specifies a valid project in your workspace.
+
+!ENTRY org.eclipse.cdt.debug.core 4 103 2025-03-07 10:10:09.168
+!MESSAGE Project Bai2 does not exist. Please check that your launch configuration specifies a valid project in your workspace.
+!SESSION 2025-03-07 10:13:08.103 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-07 10:15:16.156
+!MESSAGE Indexed 'BT1Them_bsp' (77 sources, 55 headers) in 0.61 sec: 919 declarations; 2,181 references; 113 unresolved inclusions; 5 syntax errors; 193 unresolved names (5.86%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-07 10:15:17.425
+!MESSAGE Indexed 'BT1Them' (0 sources, 13 headers) in 0.01 sec: 0 declarations; 0 references; 13 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:16:34.690
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:16:36.676
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:17:33.774
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:17:34.233
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:17:36.163
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:18:24.113
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:18:24.666
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:18:26.641
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:19:11.432
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:19:11.920
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:19:13.839
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/Bai1/Bai1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:19:32.260
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:19:32.786
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:19:34.787
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:20:48.097
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:20:48.621
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:20:50.595
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:21:22.289
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:21:22.762
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:21:24.728
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:21:56.559
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:21:57.083
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:21:58.978
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:34:10.361
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:34:10.686
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:34:12.373
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --stop] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2025-03-07 10:34:12.384
+!MESSAGE Executing: [E:/quartus/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:34:14.370
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=1, --instance=0, --go, /cygdrive/e/CE433/ThucHanh/Bai1/Software/BT1Them/BT1Them.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2025-03-07 10:34:14.372
+!MESSAGE Downloading ELF Process failed

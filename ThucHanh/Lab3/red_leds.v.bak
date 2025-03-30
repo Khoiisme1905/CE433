@@ -1,0 +1,24 @@
+ modulered_leds
+ (
+ input iClk,
+ input iReset_n,
+ input iChip_select_n,
+ inputiWrite_n,
+ input[31:0]iRed_leds_data,
+ outputreg[31:0]oRed_leds
+ );
+ always@(posedgeiClk,negedgeiReset_n)
+ begin
+ if(~iReset_n)
+ begin
+ oRed_leds<=32'd0;
+ end
+ else
+ begin
+ if(~iChip_select_n&~iWrite_n)
+ begin
+ oRed_leds<=iRed_leds_data;
+ end
+ end
+ end
+ endmodule

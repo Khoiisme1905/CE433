@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable>
+  <columns>
+   <connections preferredWidth="111" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="548" />
+   <clocksource preferredWidth="547" />
+   <frequency preferredWidth="529" />
+  </columns>
+ </clocktable>
+ <library
+   expandedCategories="Library/Qsys Interconnect/Tri-State Components,Library/Interface Protocols/Ethernet/Example Designs,Library/Interface Protocols/Ethernet,Library/Interface Protocols,Library/Interface Protocols/Serial,Library/Qsys Interconnect,Library/Bridges and Adapters,Library/Qsys Interconnect/Memory-Mapped,Library/Interface Protocols/Interlaken,Library/PLL,Library/Memories and Memory Controllers/On-Chip,Library/Bridges and Adapters/DMA,Library/Memories and Memory Controllers,Library,Library/Verification,Library/Peripherals,Library/DSP/Video and Image Processing,Library/Bridges/Memory-Mapped,Library/Verification/Debug &amp; Performance,Library/Interface Protocols/PCI,Project,Library/Bridges/Streaming,Library/Bridges,Library/Peripherals/Debug and Performance,Library/Embedded Processors,Library/Qsys Interconnect/AHB,Library/DSP,Library/Verification/Simulation,Library/Peripherals/Display,Library/Memories and Memory Controllers/External Memory Interfaces/Pattern Generators,Library/Memories and Memory Controllers/External Memory Interfaces,Library/Interface Protocols/Transceiver PHY,Library/Interface Protocols/RapidIO" />
+ <window width="1920" height="1020" x="-9" y="-9" />
+ <hdlexample language="VERILOG" />
+</preferences>

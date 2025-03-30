@@ -1,0 +1,25 @@
+/*
+ * source.c
+ *
+ *  Created on: Mar 28, 2025
+ *      Author: cute
+ */
+
+#include <io.h>
+#include <system.h>
+#include <stdio.h>
+
+int main()
+{
+	int A, B, Z;
+
+	A = 5;
+	B = 7;
+
+	IOWR(ARRAY_MULTIPLIER_IP_0_BASE, 0, A);
+	IOWR(ARRAY_MULTIPLIER_IP_0_BASE, 1, B);
+
+	Z = IORD(ARRAY_MULTIPLIER_IP_0_BASE, 2);
+
+	printf("ketqua = %d\n",Z);
+}

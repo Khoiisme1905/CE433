@@ -1,0 +1,14 @@
+ module Bai4(
+ input
+ input
+ );
+ system Nios_system (
+ .clk_clk
+ .reset_reset_n
+ CLOCK_50,
+ [0:0]
+ KEY
+ (CLOCK_50),
+ (KEY[0])
+ );
+ Endmodule
