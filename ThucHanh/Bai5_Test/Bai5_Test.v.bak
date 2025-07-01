@@ -1,0 +1,26 @@
+module Bai5_Test 
+(  
+    input  CLOCK_50,
+    output lcd_on_export,
+    output lcd_blon_export,
+    output lcd_en_export,
+    output lcd_rw_export,
+    output lcd_rs_export,
+    output [7:0] lcd_d_export,
+    input  [7:0] switch_export,
+	 input  [0:0] KEY
+);   
+ 
+    system NIOS_system 
+    ( 
+        .clk_clk(CLOCK_50), 
+        .lcd_on_export(lcd_on_export),
+        .lcd_blon_export(lcd_blon_export),
+        .lcd_en_export(lcd_en_export),
+        .lcd_rw_export(lcd_rw_export),
+        .lcd_rs_export(lcd_rs_export),
+        .lcd_d_export(lcd_d_export),
+        .switch_export(switch_export),
+		  .reset_reset_n(KEY[0])
+    ); 
+endmodule

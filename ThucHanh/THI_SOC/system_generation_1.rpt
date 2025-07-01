@@ -1,0 +1,189 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=C:/Users/speci/Downloads/LAB_SOC/THI_SOC/ --output-directory=C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system/ --report-file=bsf:C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system.bsf --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C35F672C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system.qsys
+Progress: Loading THI_SOC/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 13.0.1.99.2]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding Memory_0 [Memory 1.0]
+Progress: Parameterizing module Memory_0
+Progress: Adding FMAX_0 [FMAX 1.0]
+Progress: Parameterizing module FMAX_0
+Progress: Adding HEX_0 [HEX 1.0]
+Progress: Parameterizing module HEX_0
+Progress: Adding SW_IN [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module SW_IN
+Progress: Adding SW_EN [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module SW_EN
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system.SW_IN: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system.SW_EN: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=C:/Users/speci/Downloads/LAB_SOC/THI_SOC/ --output-directory=C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system.sopcinfo --report-file=html:C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system.html --report-file=qip:C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system/synthesis/system.qip --report-file=cmp:C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C35F672C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system.qsys --language=VERILOG
+Progress: Loading THI_SOC/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 13.0.1.99.2]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding Memory_0 [Memory 1.0]
+Progress: Parameterizing module Memory_0
+Progress: Adding FMAX_0 [FMAX 1.0]
+Progress: Parameterizing module FMAX_0
+Progress: Adding HEX_0 [HEX 1.0]
+Progress: Parameterizing module HEX_0
+Progress: Adding SW_IN [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module SW_IN
+Progress: Adding SW_EN [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module SW_EN
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system.SW_IN: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system.SW_EN: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: system: Generating system "system" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 9 modules, 35 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_translator_transform: After transform: 19 modules, 73 connections
+Info: merlin_domain_transform: After transform: 38 modules, 193 connections
+Info: merlin_router_transform: After transform: 48 modules, 231 connections
+Info: merlin_burst_transform: After transform: 49 modules, 235 connections
+Info: reset_adaptation_transform: After transform: 51 modules, 195 connections
+Info: merlin_network_to_switch_transform: After transform: 70 modules, 239 connections
+Info: merlin_width_transform: After transform: 72 modules, 245 connections
+Info: merlin_mm_transform: After transform: 72 modules, 245 connections
+Info: merlin_interrupt_mapper_transform: After transform: 73 modules, 248 connections
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: system: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Info: nios2_qsys_0: Starting RTL generation for module 'system_nios2_qsys_0'
+Info: nios2_qsys_0:   Generation command is [exec C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=system_nios2_qsys_0 --dir=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0033_nios2_qsys_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0033_nios2_qsys_0_gen//system_nios2_qsys_0_processor_configuration.pl  --do_build_sim=0    --bogus  ]
+Info: nios2_qsys_0: # 2025.05.23 08:40:20 (*) Starting Nios II generation
+Info: nios2_qsys_0: # 2025.05.23 08:40:20 (*)   Checking for plaintext license.
+Info: nios2_qsys_0: # 2025.05.23 08:40:21 (*)   Couldn't query license setup in Quartus directory C:/altera/13.0sp1/quartus
+Info: nios2_qsys_0: # 2025.05.23 08:40:21 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: nios2_qsys_0: # 2025.05.23 08:40:21 (*)   LM_LICENSE_FILE environment variable is empty
+Info: nios2_qsys_0: # 2025.05.23 08:40:21 (*)   Plaintext license not found.
+Info: nios2_qsys_0: # 2025.05.23 08:40:21 (*)   No license required to generate encrypted Nios II/e.
+Info: nios2_qsys_0: # 2025.05.23 08:40:21 (*)   Elaborating CPU configuration settings
+Info: nios2_qsys_0: # 2025.05.23 08:40:21 (*)   Creating all objects for CPU
+Info: nios2_qsys_0: # 2025.05.23 08:40:22 (*)   Generating RTL from CPU objects
+Info: nios2_qsys_0: # 2025.05.23 08:40:22 (*)   Creating plain-text RTL
+Info: nios2_qsys_0: # 2025.05.23 08:40:23 (*) Done Nios II generation
+Info: nios2_qsys_0: Done RTL generation for module 'system_nios2_qsys_0'
+Info: nios2_qsys_0: "system" instantiated altera_nios2_qsys "nios2_qsys_0"
+Info: onchip_memory2_0: Starting RTL generation for module 'system_onchip_memory2_0'
+Info: onchip_memory2_0:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_onchip_memory2_0 --dir=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0034_onchip_memory2_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0034_onchip_memory2_0_gen//system_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2_0: Done RTL generation for module 'system_onchip_memory2_0'
+Info: onchip_memory2_0: "system" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
+Info: jtag_uart_0: Starting RTL generation for module 'system_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=system_jtag_uart_0 --dir=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0035_jtag_uart_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0035_jtag_uart_0_gen//system_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0: Done RTL generation for module 'system_jtag_uart_0'
+Info: jtag_uart_0: "system" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: Memory_0: "system" instantiated Memory "Memory_0"
+Info: FMAX_0: "system" instantiated FMAX "FMAX_0"
+Info: HEX_0: "system" instantiated HEX "HEX_0"
+Info: SW_IN: Starting RTL generation for module 'system_SW_IN'
+Info: SW_IN:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_SW_IN --dir=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0039_SW_IN_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0039_SW_IN_gen//system_SW_IN_component_configuration.pl  --do_build_sim=0  ]
+Info: SW_IN: Done RTL generation for module 'system_SW_IN'
+Info: SW_IN: "system" instantiated altera_avalon_pio "SW_IN"
+Info: SW_EN: Starting RTL generation for module 'system_SW_EN'
+Info: SW_EN:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_SW_EN --dir=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0040_SW_EN_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/speci/AppData/Local/Temp/alt0231_2819455061793010628.dir/0040_SW_EN_gen//system_SW_EN_component_configuration.pl  --do_build_sim=0  ]
+Info: SW_EN: Done RTL generation for module 'system_SW_EN'
+Info: SW_EN: "system" instantiated altera_avalon_pio "SW_EN"
+Info: nios2_qsys_0_instruction_master_translator: "system" instantiated altera_merlin_master_translator "nios2_qsys_0_instruction_master_translator"
+Info: nios2_qsys_0_jtag_debug_module_translator: "system" instantiated altera_merlin_slave_translator "nios2_qsys_0_jtag_debug_module_translator"
+Info: nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent: "system" instantiated altera_merlin_master_agent "nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent"
+Info: nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent: "system" instantiated altera_merlin_slave_agent "nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent"
+Info: nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo: "system" instantiated altera_avalon_sc_fifo "nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo"
+Info: addr_router: "system" instantiated altera_merlin_router "addr_router"
+Info: addr_router_001: "system" instantiated altera_merlin_router "addr_router_001"
+Info: id_router: "system" instantiated altera_merlin_router "id_router"
+Info: id_router_004: "system" instantiated altera_merlin_router "id_router_004"
+Info: id_router_005: "system" instantiated altera_merlin_router "id_router_005"
+Info: burst_adapter: "system" instantiated altera_merlin_burst_adapter "burst_adapter"
+Info: rst_controller: "system" instantiated altera_reset_controller "rst_controller"
+Info: cmd_xbar_demux: "system" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_demux_001: "system" instantiated altera_merlin_demultiplexer "cmd_xbar_demux_001"
+Info: cmd_xbar_mux: "system" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: rsp_xbar_demux: "system" instantiated altera_merlin_demultiplexer "rsp_xbar_demux"
+Info: rsp_xbar_demux_004: "system" instantiated altera_merlin_demultiplexer "rsp_xbar_demux_004"
+Info: rsp_xbar_mux: "system" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_mux_001: "system" instantiated altera_merlin_multiplexer "rsp_xbar_mux_001"
+Info: Reusing file C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: width_adapter: "system" instantiated altera_merlin_width_adapter "width_adapter"
+Info: Reusing file C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/Users/speci/Downloads/LAB_SOC/THI_SOC/system/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: irq_mapper: "system" instantiated altera_irq_mapper "irq_mapper"
+Info: system: Done system" with 30 modules, 98 files, 2081283 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include "io.h"
+#include "system.h"
+#include "alt_types.h"
+#include "sys/alt_timestamp.h"
+
+void delay_ms(int ms) {
+    volatile int i, j;
+    for (i = 0; i < ms; i++)
+        for (j = 0; j < 1000; j++);
+}
+
+void main()
+{
+    int data;
+    char i;
+
+    printf("Starting memory test...\n");
+
+    for (i=0; i<16; i++) {
+        printf("Writing %d to address %d\n", i, i);
+        IOWR(MEMORY_0_BASE, i, i);
+        delay_ms(100);
+    }
+    delay_ms(500);
+
+    for (i=0; i<16; i++){
+        data = IORD(MEMORY_0_BASE, i);
+        printf("data[%d] = %d\n", i, data);
+        delay_ms(100);
+    }
+
+    printf("Memory test completed.\n");
+}

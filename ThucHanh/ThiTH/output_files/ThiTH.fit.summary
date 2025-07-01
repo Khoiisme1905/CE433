@@ -1,0 +1,16 @@
+Fitter Status : Successful - Thu May 29 14:51:00 2025
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : ThiTH
+Top-level Entity Name : ThiTH
+Family : Cyclone II
+Device : EP2C35F672C6
+Timing Models : Final
+Total logic elements : 2,363 / 33,216 ( 7 % )
+    Total combinational functions : 2,232 / 33,216 ( 7 % )
+    Dedicated logic registers : 1,206 / 33,216 ( 4 % )
+Total registers : 1206
+Total pins : 32 / 475 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 273,920 / 483,840 ( 57 % )
+Embedded Multiplier 9-bit elements : 0 / 70 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

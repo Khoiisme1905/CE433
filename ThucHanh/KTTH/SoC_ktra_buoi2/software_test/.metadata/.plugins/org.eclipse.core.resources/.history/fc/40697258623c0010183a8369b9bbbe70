@@ -1,0 +1,134 @@
+#include <stdio.h>
+#include "system.h"
+#include "io.h"
+#include "unistd.h"
+#include "altera_avalon_pio_regs.h"
+
+#define NUM_VALUES 5
+
+void delay(int a) {
+    volatile int i = 0;
+    while (i < a * 10000) i++;
+}
+
+void command(unsigned char data) {
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RS_BASE, 0x00);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RW_BASE, 0x00);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_D_BASE, data & 0xFF);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0x01);
+    delay(20);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0x00);
+    delay(20);
+}
+
+void lcd_data(unsigned char data) {
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RS_BASE, 0x01);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RW_BASE, 0x00);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_D_BASE, data & 0xFF);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0x01);
+    delay(20);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0x00);
+    delay(20);
+}
+void lcd_string(char *str) {
+    int i = 0;
+    while (str[i] != 0) {
+        lcd_data(str[i]);
+        i++;
+    }
+}
+void lcd_init() {
+    command(0x38); delay(100);
+    command(0x0C); delay(100);
+    command(0x06); delay(100);
+    command(0x01); delay(100);
+}
+
+void lcd_set_cursor(int pos) {
+    command(0x80 + pos);
+}
+
+void lcd_print_hex(int num) {
+    if (num < 10) lcd_data('0' + num);
+    else lcd_data('A' + (num - 10));
+}
+
+void lcd_print_array(int *arr, int len) {
+    int i;
+    for (i = 0; i < len; i++) {
+        lcd_print_hex(arr[i]);
+        if (i != len - 1) lcd_data(' ');
+    }
+}
+
+int main() {
+    int count = 0;
+    int values[NUM_VALUES];
+    int sorted[NUM_VALUES];
+    int i;
+
+    lcd_init();
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_ON_BASE, 0x01);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_BLON_BASE, 0x01);
+
+    while (1) {
+        printf("Nhap gia tri thu %d (0-15) tu switch:\n", count + 1);
+        usleep(3000000);
+
+        int switch_val = IORD(SWITCH_BASE, 0) & 0xF;
+        printf("Gia tri doc duoc: %X\n", switch_val);
+
+        if (count < NUM_VALUES) {
+            IOWR(MEMORY_0_BASE, count, switch_val);
+            printf("Ghi MEMORY[%d] = %X\n", count, switch_val);
+            count++;
+            usleep(2000000);
+        }
+
+        if (count == NUM_VALUES) {
+            for (i = 0; i < NUM_VALUES; i++) {
+                values[i] = IORD(MEMORY_0_BASE, i) & 0xF;
+            }
+
+            lcd_set_cursor(0x00);
+            lcd_string("Truoc:");
+            lcd_set_cursor(6);
+            lcd_print_array(values, NUM_VALUES);
+
+            printf("Mang truoc sort: ");
+            for (i = 0; i < NUM_VALUES; i++) {
+                printf("%X ", values[i]);
+            }
+            printf("\n");
+
+            for (i = 0; i < NUM_VALUES; i++) {
+                IOWR(SORT5_0_BASE, i, values[i]);
+            }
+
+            IOWR(SORT5_0_BASE, 5, 1);
+
+            usleep(1000000);
+            IOWR(SORT5_0_BASE, 5, 0);
+            for (i = 0; i < NUM_VALUES; i++) {
+                sorted[i] = IORD(SORT5_0_BASE, 6 + i) & 0xF;
+            }
+
+            lcd_set_cursor(0x40);
+            lcd_string("Sau:");
+            lcd_set_cursor(4);
+            lcd_print_array(sorted, NUM_VALUES);
+
+            printf("Mang sau sort: ");
+            for (i = 0; i < NUM_VALUES; i++) {
+                printf("%X ", sorted[i]);
+            }
+            printf("\n");
+
+            count = 0;
+            printf("Hoan thanh.\n");
+            usleep(5000000);
+        }
+    }
+
+    return 0;
+}

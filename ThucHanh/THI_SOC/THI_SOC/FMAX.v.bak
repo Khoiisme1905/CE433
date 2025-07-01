@@ -1,0 +1,7 @@
+module FMAX(
+	input [19:0]Val,
+	output [4:0]Val_Max
+);
+
+
+endmodule

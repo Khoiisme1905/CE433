@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="Bai8">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_onchip_memory2_0:onchip_memory2_0|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_gsc1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_dma_0:dma_0|system_dma_0_fifo_module:the_system_dma_0_fifo_module|system_dma_0_fifo_module_fifo_ram_module:system_dma_0_fifo_module_fifo_ram|lpm_ram_dp:lpm_ram_dp_component|altdpram:sram" CBX_FILE_NAME="dpram_rkd1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_dma_0:dma_0|system_dma_0_fifo_module:the_system_dma_0_fifo_module|system_dma_0_fifo_module_fifo_ram_module:system_dma_0_fifo_module_fifo_ram|lpm_ram_dp:lpm_ram_dp_component|altdpram:sram|altsyncram:ram_block" CBX_FILE_NAME="altsyncram_v7q1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_jtag_uart_0:jtag_uart_0|system_jtag_uart_0_scfifo_w:the_system_jtag_uart_0_scfifo_w|scfifo:wfifo" CBX_FILE_NAME="scfifo_1n21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_nios2_qsys_0:nios2_qsys_0|system_nios2_qsys_0_nios2_oci:the_system_nios2_qsys_0_nios2_oci|system_nios2_qsys_0_nios2_ocimem:the_system_nios2_qsys_0_nios2_ocimem|system_nios2_qsys_0_ociram_sp_ram_module:system_nios2_qsys_0_ociram_sp_ram|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_p681.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_nios2_qsys_0:nios2_qsys_0|system_nios2_qsys_0_register_bank_a_module:system_nios2_qsys_0_register_bank_a|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_lpg1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_nios2_qsys_0:nios2_qsys_0|system_nios2_qsys_0_register_bank_b_module:system_nios2_qsys_0_register_bank_b|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_mpg1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_jtag_uart_0:jtag_uart_0|system_jtag_uart_0_scfifo_r:the_system_jtag_uart_0_scfifo_r|scfifo:rfifo" CBX_FILE_NAME="scfifo_1n21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Bai8|system:Nios_system|system_onchip_memory2_1:onchip_memory2_1|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_krc1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

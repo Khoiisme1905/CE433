@@ -1,0 +1,27 @@
+module test 
+    (  
+        input CLOCK_50,       // Clock 50 MHz
+        input [0:0] KEY,      // Nút nhấn Reset
+		  input [3:0] SW,
+		  output LCD_ON,
+		  output LCD_BLON,
+        output LCD_RS,        // Register Select
+        output LCD_RW,        // Read/Write
+        output LCD_EN,        // Enable
+        output [3:0] LCD_DATA // Dữ liệu LCD
+    );   
+
+    system NIOS_system 
+    ( 
+        .clk_clk(CLOCK_50), 
+        .reset_reset_n(KEY[0]), 
+		  .switch_external_connection_export(SW),
+		  .lcd_on_external_connection_export(LCD_ON), 
+        .lcd_blon_external_connection_export(LCD_BLON), 
+        .lcd_rs_external_connection_export(LCD_RS), 
+        .lcd_rw_external_connection_export(LCD_RW), 
+        .lcd_en_external_connection_export(LCD_EN), 
+        .lcd_d_external_connection_export(LCD_DATA)
+    ); 
+
+endmodule 

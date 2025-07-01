@@ -1,0 +1,80 @@
+/*
+ * source.c
+ *
+ *  Created on: 23-05-2025
+ *      Author: speci
+ */
+
+
+ #include <stdio.h>
+ #include "io.h"
+ #include "system.h"
+ #include "sys/alt_stdio.h"
+ #include <stdio.h>
+ #include "system.h"
+ #include "altera_avalon_pio_regs.h"
+
+
+void main(){
+	//Neu Key[1] = 1 thi cho phep nap tu SW
+	int Load_EN = 0;
+	int Load_Data = 0;
+	int mem_index = 0;
+	int Mem_Data[5];
+	unsigned int Val;
+	unsigned int SUM_Result;
+	int Load_Butt = 0;
+	int Delay_Time;
+	int chuc,donvi;
+	while(1){
+		Load_EN = IORD(SW_EN_BASE, 0) & 0x1;
+
+		if(Load_EN == 0){
+			for (Delay_Time = 0; Delay_Time < 50000; Delay_Time = Delay_Time + 1); // 50000 cycles = 1 ms at 50 MHz
+			if((IORD(SW_EN_BASE, 0) & 0x1) == 1){
+				Load_Butt = 1;
+			}
+		}
+
+		Load_Data = IORD(SW_IN_BASE, 0) & 0xF;
+
+
+		if(Load_Butt == 1 && mem_index < 5){
+			printf("Data_Input: %d \n", Load_Data);
+			IOWR(MEMORY_0_BASE, mem_index, Load_Data);
+			mem_index = mem_index + 1;
+		}
+
+		if(mem_index >= 5){
+			mem_index = 0;
+			Mem_Data[0] = IORD(MEMORY_0_BASE, 0);
+			Mem_Data[1] = IORD(MEMORY_0_BASE, 1);
+			Mem_Data[2] = IORD(MEMORY_0_BASE, 2);
+			Mem_Data[3] = IORD(MEMORY_0_BASE, 3);
+			Mem_Data[4] = IORD(MEMORY_0_BASE, 4);
+
+			Val = ((Mem_Data[0] & 0xF) << 16) |
+			      ((Mem_Data[1] & 0xF) << 12) |
+			      ((Mem_Data[2] & 0xF) << 8)  |
+			      ((Mem_Data[3] & 0xF) << 4)  |
+			       (Mem_Data[4] & 0xF);
+			IOWR(SUM_0_BASE, 0, Val);
+
+			SUM_Result = IORD(SUM_0_BASE, 1);
+			printf("Sum Result: %d \n", SUM_Result);
+
+			chuc = SUM_Result/10;
+			donvi = SUM_Result%10;
+
+			IOWR(HEX_0_BASE, 0, chuc);
+			IOWR(HEX_1_BASE, 0, donvi);
+			IORD(HEX_0_BASE, 0);
+			IORD(HEX_1_BASE, 0);
+		}
+
+		Load_Butt = 0;
+	}
+
+
+
+}

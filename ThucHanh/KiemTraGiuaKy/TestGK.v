@@ -1,0 +1,62 @@
+module TestGK (
+    // Avalon Bus Signals
+    input           iClk,
+    input           iReset_n,
+    input           iChipSelect_n,  // Tín hiệu chọn chip
+    input           iWrite_n,       // Tín hiệu điều khiển ghi dữ liệu
+    input           iRead_n,        // Tín hiệu điều khiển đọc dữ liệu
+    input   [2:0]   iAddress,       // Địa chỉ Avalon (0-4)
+    input   [31:0]  iData,          // Dữ liệu đầu vào (32 bit)
+    output reg [31:0] oData         // Dữ liệu đầu ra (32 bit)
+);
+
+    // Khai báo module Median_Filter
+    // Module của bạn sẽ nhận vào 5 giá trị 8 bit và tính toán trung vị
+    reg [7:0] Datain[4:0];  // Dữ liệu đầu vào (5 giá trị 8 bit)
+    reg [7:0] Dataout;      // Kết quả trung vị đầu ra
+
+    // Gọi module Median_Filter mà bạn đã có
+    median_filter median_inst (
+        .Clk(iClk),
+        .reset(iReset_n),
+        .Enable(~iWrite_n),   // Enable khi có tín hiệu ghi
+        .Datain(iData),      // Dữ liệu đầu vào
+        .Dataout(Dataout)     // Kết quả trung vị
+    );
+
+    // Avalon Bus Write Logic
+    always @(posedge iClk or negedge iReset_n) begin
+        if (~iReset_n) begin
+            // Reset mảng dữ liệu đầu vào
+            Datain[0] <= 8'd0;
+            Datain[1] <= 8'd0;
+            Datain[2] <= 8'd0;
+            Datain[3] <= 8'd0;
+            Datain[4] <= 8'd0;
+        end else if (~iChipSelect_n & ~iWrite_n) begin
+            // Handle Avalon write operation (ghi dữ liệu từ bus vào Datain)
+            case(iAddress)
+                3'd0: Datain[0] <= iData[7:0];  // Write to Datain[0]
+                3'd1: Datain[1] <= iData[7:0];  // Write to Datain[1]
+                3'd2: Datain[2] <= iData[7:0];  // Write to Datain[2]
+                3'd3: Datain[3] <= iData[7:0];  // Write to Datain[3]
+                3'd4: Datain[4] <= iData[7:0];  // Write to Datain[4]
+                default: ;
+            endcase
+        end
+    end
+
+    // Avalon Bus Read Logic
+    always @(posedge iClk or negedge iReset_n) begin
+        if (~iReset_n) begin
+            oData <= 32'd0;
+        end else if (~iChipSelect_n & ~iRead_n) begin
+            // Handle Avalon read operation (đọc kết quả trung vị từ Dataout)
+            case(iAddress)
+                3'd0: oData <= {24'd0, Dataout};  // Đọc kết quả trung vị
+                default: oData <= 32'd0;         // Default case
+            endcase
+        end
+    end
+
+endmodule

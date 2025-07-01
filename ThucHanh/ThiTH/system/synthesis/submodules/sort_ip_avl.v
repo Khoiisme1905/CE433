@@ -1,0 +1,72 @@
+module sort_ip_avl (
+    input iCLK,
+    input iReset_n,
+    input iChipsellect_n,
+    input iWrite_n,
+    input iRead_n,
+    input [1:0] iAddress,
+    input [31:0] iData,
+    output reg [31:0] oData
+);
+
+    // Tín hiệu nội bộ
+    reg [3:0] values [0:4];         // Lưu 5 giá trị 4-bit
+    wire [19:0] sorted_values;      // Kết quả sắp xếp (20 bit)
+    wire done;                      // Tín hiệu hoàn thành
+    reg start_sort;                 // Tín hiệu kích hoạt sắp xếp
+    integer i;                      // Khai báo biến i bên ngoài vòng for
+
+    // Instance của module sort_ip
+    sort_ip sort_inst (
+        .clk(iCLK),
+        .rst(~iReset_n),
+        .switch(values[0]), // Dùng giá trị từ values thay vì switch
+        .confirm(start_sort),
+        .sorted_values(sorted_values),
+        .done(done)
+    );
+
+    // Logic đọc/ghi Avalon-MM
+    always @(posedge iCLK or negedge iReset_n) begin
+        if (~iReset_n) begin
+            oData <= 32'd0;
+            start_sort <= 0;
+            for (i = 0; i < 5; i = i + 1) begin
+                values[i] <= 4'd0;
+            end
+        end else begin
+            // Đọc dữ liệu
+            if (~iChipsellect_n && ~iRead_n) begin
+                case (iAddress)
+                    2'd1: begin
+                        // Xuất 5 giá trị đã sắp xếp (20 bit)
+                        oData <= {12'd0, sorted_values};
+                    end
+                    2'd2: begin
+                        // Xuất trạng thái done
+                        oData <= {31'd0, done};
+                    end
+                    default: oData <= 32'd0;
+                endcase
+            end
+
+            // Ghi dữ liệu
+            if (~iChipsellect_n && ~iWrite_n) begin
+                case (iAddress)
+                    2'd0: begin
+                        // Ghi 5 giá trị 4-bit từ iData[19:0]
+                        values[0] <= iData[3:0];
+                        values[1] <= iData[7:4];
+                        values[2] <= iData[11:8];
+                        values[3] <= iData[15:12];
+                        values[4] <= iData[19:16];
+                        start_sort <= 1; // Kích hoạt sắp xếp
+                    end
+                endcase
+            end else begin
+                start_sort <= 0; // Đặt lại tín hiệu start_sort sau khi ghi
+            end
+        end
+    end
+
+endmodule

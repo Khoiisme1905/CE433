@@ -1,0 +1,120 @@
+#include <system.h>
+#include <altera_avalon_pio_regs.h>
+#include <stdio.h>
+#include <unistd.h>
+
+#define MEM_BASE      0x11040
+#define SORT_BASE     0x110f0
+#define SWITCH_BASE   0x11100
+#define LCD_DATA_BASE 0x11120
+#define LCD_RS_BASE   0x11130
+#define LCD_RW_BASE   0x11140
+#define LCD_EN_BASE   0x11150
+#define LCD_BLON_BASE 0x11160
+#define LCD_ON_BASE   0x11170
+
+void lcd_init() {
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_ON_BASE, 1);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_BLON_BASE, 1);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RW_BASE, 0);
+
+    usleep(15000);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RS_BASE, 0);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, 0x03);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1); usleep(100); IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(5000);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, 0x03);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1); usleep(100); IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(200);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, 0x02);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1); usleep(100); IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(100);
+
+    lcd_write_cmd(0x28);
+    lcd_write_cmd(0x0C);
+    lcd_write_cmd(0x06);
+    lcd_write_cmd(0x01);
+    usleep(2000);
+}
+
+void lcd_write_cmd(alt_u8 cmd) {
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RS_BASE, 0);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, (cmd >> 4) & 0x0F);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1); usleep(100); IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, cmd & 0x0F);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1); usleep(100); IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(100);
+}
+
+void lcd_write_data(alt_u8 data) {
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RS_BASE, 1);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, (data >> 4) & 0x0F);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1); usleep(100); IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, data & 0x0F);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1); usleep(100); IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(100);
+}
+
+void lcd_write_string(const char *str) {
+    while (*str) {
+        lcd_write_data(*str++);
+    }
+}
+
+void lcd_clear() {
+    lcd_write_cmd(0x01);
+    usleep(2000);
+}
+
+void lcd_set_cursor(alt_u8 row, alt_u8 col) {
+    alt_u8 addr = (row == 0) ? 0x80 : 0xC0;
+    addr += col;
+    lcd_write_cmd(addr);
+}
+
+int main() {
+    int data[5];
+    int i;
+    alt_u32 *mem = (alt_u32 *)MEM_BASE;
+    alt_u32 *sort = (alt_u32 *)SORT_BASE;
+
+    lcd_init();
+    lcd_clear();
+    lcd_set_cursor(0, 0);
+    lcd_write_string("Nhap 5 gia tri:");
+
+    for (i = 0; i < 5; i++) {
+        data[i] = IORD_ALTERA_AVALON_PIO_DATA(SWITCH_BASE) & 0x0F;
+        printf("Gia tri %d: %d\n", i, data[i]);
+        IOWR_32DIRECT(MEM_BASE, i*4, data[i]);
+        char buf[16];
+        sprintf(buf, "GT %d: %d", i, data[i]);
+        lcd_clear();
+        lcd_set_cursor(0, 0);
+        lcd_write_string(buf);
+        usleep(2000000);
+    }
+
+    alt_u32 sort_data = (data[4] << 16) | (data[3] << 12) | (data[2] << 8) | (data[1] << 4) | data[0];
+    IOWR_32DIRECT(SORT_BASE, 0, sort_data);
+
+    while (IORD_32DIRECT(SORT_BASE, 8) != 1) {
+        usleep(1000);
+    }
+
+    lcd_clear();
+    lcd_set_cursor(0, 0);
+    lcd_write_string("Ket qua sap xep:");
+    alt_u32 sorted = IORD_32DIRECT(SORT_BASE, 4);
+    for (i = 0; i < 5; i++) {
+        char buf[16];
+        sprintf(buf, "%d: %d", i, (sorted >> (i*4)) & 0x0F);
+        lcd_clear();
+        lcd_set_cursor(0, 0);
+        lcd_write_string(buf);
+        usleep(2000000);
+    }
+
+    while (1);
+    return 0;
+}

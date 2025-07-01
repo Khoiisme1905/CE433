@@ -1,0 +1,214 @@
+#include <system.h>
+#include <altera_avalon_pio_regs.h>
+#include <stdio.h>
+#include <unistd.h>
+
+#define MEM_BASE      0x11040
+#define SORT_BASE     0x110f0
+#define SWITCH_BASE   0x11100
+#define LCD_DATA_BASE 0x11120
+#define LCD_RS_BASE   0x11130
+#define LCD_RW_BASE   0x11140
+#define LCD_EN_BASE   0x11150
+#define LCD_BLON_BASE 0x11160
+#define LCD_ON_BASE   0x11170
+
+void lcd_init();
+void lcd_write_cmd(alt_u8 cmd);
+void lcd_write_data(alt_u8 data);
+void lcd_write_string(const char *str);
+void lcd_clear();
+void lcd_set_cursor(alt_u8 row, alt_u8 col);
+
+void lcd_init() {
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_ON_BASE, 1);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_BLON_BASE, 1);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RW_BASE, 0);
+
+    usleep(15000);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RS_BASE, 0);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, 0x03);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1);
+    usleep(100);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(5000);
+
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, 0x03);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1);
+    usleep(100);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(200);
+
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, 0x02);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1);
+    usleep(100);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(100);
+
+    lcd_write_cmd(0x28); // 4-bit mode, 2 lines
+    lcd_write_cmd(0x0C); // Display on, cursor off
+    lcd_write_cmd(0x06); // Entry mode
+    lcd_write_cmd(0x01); // Clear display
+    usleep(2000);
+}
+
+void lcd_write_cmd(alt_u8 cmd) {
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RS_BASE, 0);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, (cmd >> 4) & 0x0F);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1);
+    usleep(100);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, cmd & 0x0F);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1);
+    usleep(100);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(100);
+}
+
+void lcd_write_data(alt_u8 data) {
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_RS_BASE, 1);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, (data >> 4) & 0x0F);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1);
+    usleep(100);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_DATA_BASE, data & 0x0F);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 1);
+    usleep(100);
+    IOWR_ALTERA_AVALON_PIO_DATA(LCD_EN_BASE, 0);
+    usleep(100);
+}
+
+void lcd_write_string(const char *str) {
+    while (*str) {
+        lcd_write_data(*str++);
+    }
+}
+
+void lcd_clear() {
+    lcd_write_cmd(0x01);
+    usleep(2000);
+}
+
+void lcd_set_cursor(alt_u8 row, alt_u8 col) {
+    alt_u8 addr = (row == 0) ? 0x80 : 0xC0;
+    addr += col;
+    lcd_write_cmd(addr);
+}
+
+int main() {
+    int data[5];
+    int i;
+    alt_u32 switch_val;
+    char buf[32];
+
+    printf("Bat dau chuong trinh...\n");
+
+    lcd_init();
+    lcd_clear();
+    lcd_set_cursor(0, 0);
+    lcd_write_string("Nhap 5 gia tri:");
+
+    printf("Bat dau nhap du lieu...\n");
+
+    for (i = 0; i < 5; i++) {
+        lcd_clear();
+        sprintf(buf, "Nhap GT %d:", i + 1);
+        lcd_set_cursor(0, 0);
+        lcd_write_string(buf);
+        lcd_set_cursor(1, 0);
+        lcd_write_string("Bat switch roi Enter");
+
+        printf("Nhap gia tri %d (bat switch roi nhan Enter): ", i + 1);
+        getchar();
+
+        switch_val = IORD_ALTERA_AVALON_PIO_DATA(SWITCH_BASE);
+        data[i] = switch_val & 0x0F;
+
+        printf("Gia tri %d: %d\n", i + 1, data[i]);
+
+        IOWR_32DIRECT(MEM_BASE, i*4, data[i]);
+
+        lcd_clear();
+        sprintf(buf, "GT %d: %d", i + 1, data[i]);
+        lcd_set_cursor(0, 0);
+        lcd_write_string(buf);
+        usleep(1000000);
+    }
+
+    printf("Da nhap xong 5 gia tri\n");
+
+    lcd_clear();
+    lcd_set_cursor(0, 0);
+    lcd_write_string("Dang sap xep...");
+
+    alt_u32 sort_data = 0;
+    for (i = 0; i < 5; i++) {
+        sort_data |= (data[i] & 0x0F) << (i * 4);
+    }
+
+    printf("Du lieu gui den sort IP: 0x%08X\n", sort_data);
+
+    IOWR_32DIRECT(SORT_BASE, 0, sort_data);
+
+    printf("Dang doi sort IP hoan thanh...\n");
+    alt_u32 done_status;
+    int timeout = 1000;
+    do {
+        done_status = IORD_32DIRECT(SORT_BASE, 8);
+        usleep(1000);
+        timeout--;
+        if (timeout == 0) {
+            printf("Timeout! Sort IP khong phan hoi\n");
+            break;
+        }
+    } while (done_status != 1);
+
+    if (done_status == 1) {
+        printf("Sort IP da hoan thanh\n");
+
+        alt_u32 sorted = IORD_32DIRECT(SORT_BASE, 4);
+        printf("Ket qua sap xep: 0x%08X\n", sorted);
+
+        lcd_clear();
+        lcd_set_cursor(0, 0);
+        lcd_write_string("Ket qua sap xep:");
+
+        for (i = 0; i < 5; i++) {
+            int sorted_val = (sorted >> (i * 4)) & 0x0F;
+            printf("Gia tri %d: %d\n", i + 1, sorted_val);
+
+            sprintf(buf, "%d: %d", i + 1, sorted_val);
+            lcd_clear();
+            lcd_set_cursor(0, 0);
+            lcd_write_string("Ket qua:");
+            lcd_set_cursor(1, 0);
+            lcd_write_string(buf);
+            usleep(2000000);
+        }
+
+        lcd_clear();
+        sprintf(buf, "%d %d %d %d %d",
+                (int)((sorted >> 0) & 0x0F),
+                (int)((sorted >> 4) & 0x0F),
+                (int)((sorted >> 8) & 0x0F),
+                (int)((sorted >> 12) & 0x0F),
+                (int)((sorted >> 16) & 0x0F));
+        lcd_set_cursor(0, 0);
+        lcd_write_string("KQ:");
+        lcd_set_cursor(1, 0);
+        lcd_write_string(buf);
+    } else {
+        lcd_clear();
+        lcd_set_cursor(0, 0);
+        lcd_write_string("Loi sap xep!");
+    }
+
+    printf("Chuong trinh ket thuc\n");
+    while (1) {
+        usleep(100000);
+    }
+
+    return 0;
+}
